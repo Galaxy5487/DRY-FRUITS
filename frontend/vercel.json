@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://nr-dry-fruit-api.onrender.com/api/:path*"
+      "destination": "https://backend-henna-ten-34.vercel.app/api/:path*"
     },
     {
       "source": "/uploads/:path*",
-      "destination": "https://nr-dry-fruit-api.onrender.com/uploads/:path*"
+      "destination": "https://backend-henna-ten-34.vercel.app/uploads/:path*"
     },
     {
       "source": "/(.*)",
