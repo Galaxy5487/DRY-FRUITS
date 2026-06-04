@@ -20,10 +20,26 @@ const __dirname = path.dirname(__filename);
 
 export const app = express();
 
+const isAllowedOrigin = (origin) => {
+  if (!origin || env.clientUrls.includes(origin)) {
+    return true;
+  }
+
+  try {
+    const { hostname, protocol } = new URL(origin);
+    return (
+      protocol === "https:" &&
+      (hostname.endsWith(".vercel.app") || hostname === "nr-dry-fruit.web.app")
+    );
+  } catch {
+    return false;
+  }
+};
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || env.clientUrls.includes(origin)) {
+      if (isAllowedOrigin(origin)) {
         callback(null, true);
         return;
       }
