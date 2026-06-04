@@ -37,7 +37,8 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
+const uploadsPath = path.join(__dirname, "..", "uploads");
+app.use("/uploads", express.static(uploadsPath));
 
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
