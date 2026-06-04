@@ -2,11 +2,8 @@ import fs from "fs";
 import path from "path";
 import multer from "multer";
 
-const isFirebase = process.env.FUNCTION_NAME || process.env.FUNCTIONS_EMULATOR || process.env.FUNCTION_TARGET;
-const uploadDir = isFirebase ? path.join("/tmp", "uploads") : path.resolve("uploads");
+const uploadDir = path.resolve("uploads");
 fs.mkdirSync(uploadDir, { recursive: true });
-
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, uploadDir),
   filename: (req, file, cb) => {
