@@ -35,7 +35,7 @@ const isAllowedOrigin = (origin) => {
 
   try {
     const { hostname, protocol } = new URL(origin);
-    return protocol === "https:" && hostname.endsWith(".vercel.app");
+    return protocol === "https:" && (hostname.endsWith(".vercel.app") || hostname.endsWith(".netlify.app"));
   } catch {
     return false;
   }
